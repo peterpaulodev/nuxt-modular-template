@@ -1,4 +1,5 @@
 import { resolve } from 'node:path'
+import vue from '@vitejs/plugin-vue'
 import type { StorybookConfig } from '@storybook/vue3-vite'
 
 const config: StorybookConfig = {
@@ -9,7 +10,9 @@ const config: StorybookConfig = {
     options: {},
   },
 
-  viteFinal(config) {
+  async viteFinal(config) {
+    config.plugins = [...(config.plugins || []), vue()]
+
     config.resolve ??= {}
     config.resolve.alias = {
       ...config.resolve.alias,
@@ -17,6 +20,7 @@ const config: StorybookConfig = {
       '@core': resolve(__dirname, '../app/core'),
       '@modules': resolve(__dirname, '../app/modules'),
     }
+
     return config
   },
 }

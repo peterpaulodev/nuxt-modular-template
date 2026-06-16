@@ -21,6 +21,7 @@
     "@commitlint/config-conventional": "^21.0.2",
     "@storybook/vue3": "^9.1.20",
     "@storybook/vue3-vite": "^9.1.20",
+    "@vitejs/plugin-vue": "^6.0.7",
     "eslint": "^10.5.0",
     "husky": "^9.1.7",
     "lint-staged": "^17.0.7",

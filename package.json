@@ -11,5 +11,8 @@
     "create:ui": "node scripts/create-ui.mjs",
     "create:page": "node scripts/create-page.mjs",
     "storybook": "pnpm --filter web storybook"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7"
   }
 }
