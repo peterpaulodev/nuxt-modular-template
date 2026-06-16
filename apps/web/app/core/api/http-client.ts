@@ -1,4 +1,5 @@
 import { $fetch } from 'ofetch'
+import { ApiError } from './api-error'
 
 export const httpClient = $fetch.create({
   baseURL: '/api',
@@ -10,9 +11,10 @@ export const httpClient = $fetch.create({
     // Feature Flags
   },
 
-  onResponseError({ response }) {
-    console.error(
-      `[HTTP ERROR] ${response.status} - ${response.statusText}`
+  async onResponseError({ response }) {
+    throw new ApiError(
+      response.statusText,
+      response.status
     )
   },
 })
