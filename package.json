@@ -9,6 +9,7 @@
     "prepare": "husky",
     "create:module": "node scripts/create-module.mjs",
     "create:ui": "node scripts/create-ui.mjs",
-    "create:page": "node scripts/create-page.mjs"
+    "create:page": "node scripts/create-page.mjs",
+    "storybook": "pnpm --filter web storybook"
   }
 }

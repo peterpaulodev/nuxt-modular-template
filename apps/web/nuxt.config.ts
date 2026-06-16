@@ -7,4 +7,16 @@ export default defineNuxtConfig({
     '@shared': resolve('./app/shared'),
     '@modules': resolve('./app/modules'),
   },
+  runtimeConfig: {
+    public: {
+      apiBaseUrl: process.env.NUXT_PUBLIC_API_BASE_URL,
+
+      appName: process.env.NUXT_PUBLIC_APP_NAME,
+
+      appEnv: process.env.NUXT_PUBLIC_APP_ENV,
+
+      enableTelemetry:
+        process.env.NUXT_PUBLIC_ENABLE_TELEMETRY === 'true',
+    },
+  },
 })

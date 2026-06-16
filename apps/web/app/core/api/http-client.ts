@@ -1,20 +1,25 @@
 import { $fetch } from 'ofetch'
 import { ApiError } from './api-error'
+import { useAppConfig } from '@core/config'
 
-export const httpClient = $fetch.create({
-  baseURL: '/api',
+export const createHttpClient = () => {
+  const { apiBaseUrl } = useAppConfig()
 
-  onRequest({ options }) {
-    // Futuramente:
-    // Authorization
-    // CorrelationId
-    // Feature Flags
-  },
+  return $fetch.create({
+    baseURL: apiBaseUrl,
 
-  async onResponseError({ response }) {
-    throw new ApiError(
-      response.statusText,
-      response.status
-    )
-  },
-})
+    onRequest({ options }) {
+      // Futuramente:
+      // Authorization
+      // CorrelationId
+      // Feature Flags
+    },
+
+    async onResponseError({ response }) {
+      throw new ApiError(
+        response.statusText,
+        response.status
+      )
+    },
+  })
+}
