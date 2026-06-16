@@ -1,0 +1,14 @@
+{
+  "name": "nuxt-modular-template",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --filter web dev",
+    "build": "pnpm --filter web build",
+    "lint": "pnpm --filter web lint",
+    "test": "pnpm --filter web test",
+    "prepare": "husky",
+    "create:module": "node scripts/create-module.mjs",
+    "create:ui": "node scripts/create-ui.mjs",
+    "create:page": "node scripts/create-page.mjs"
+  }
+}
