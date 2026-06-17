@@ -1,11 +1,17 @@
 import { resolve } from 'node:path'
+import tailwindcss from '@tailwindcss/vite'
 
 export default defineNuxtConfig({
   compatibilityDate: '2026-06-15',
+  devtools: { enabled: true },
   alias: {
     '@core': resolve('./app/core'),
     '@shared': resolve('./app/shared'),
     '@modules': resolve('./app/modules'),
+  },
+  css: ['~/app/app.css'],
+  vite: {
+    plugins: [tailwindcss() as any],
   },
   runtimeConfig: {
     public: {

@@ -1,5 +1,6 @@
 import { resolve } from 'node:path'
 import vue from '@vitejs/plugin-vue'
+import tailwindcss from '@tailwindcss/vite'
 import type { StorybookConfig } from '@storybook/vue3-vite'
 
 const config: StorybookConfig = {
@@ -11,7 +12,7 @@ const config: StorybookConfig = {
   },
 
   async viteFinal(config) {
-    config.plugins = [...(config.plugins || []), vue()]
+    config.plugins = [...(config.plugins || []), vue(), tailwindcss()]
 
     config.resolve ??= {}
     config.resolve.alias = {

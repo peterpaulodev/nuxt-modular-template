@@ -1,85 +1,53 @@
 <script setup lang="ts">
-type Variant = 'primary' | 'secondary' | 'ghost'
-type Size = 'sm' | 'md' | 'lg'
+import { cva, type VariantProps } from "class-variance-authority";
+import { computed } from "vue";
 
-withDefaults(
+const button = cva(
+  "inline-flex items-center justify-center font-medium rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-600 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  {
+    variants: {
+      variant: {
+        primary:
+          "bg-purple-600 text-white hover:bg-purple-700 active:bg-purple-800",
+        secondary:
+          "border border-purple-600 text-purple-600 hover:bg-purple-50 active:bg-purple-100",
+        ghost: "text-purple-600 hover:bg-purple-50 active:bg-purple-100",
+      },
+      size: {
+        sm: "px-3 py-1.5 text-sm",
+        md: "px-4 py-2 text-base",
+        lg: "px-6 py-3 text-lg",
+      },
+    },
+    defaultVariants: {
+      variant: "primary",
+      size: "md",
+    },
+  },
+);
+
+type ButtonProps = VariantProps<typeof button>;
+
+const props = withDefaults(
   defineProps<{
-    variant?: Variant
-    size?: Size
-    disabled?: boolean
+    variant?: ButtonProps["variant"];
+    size?: ButtonProps["size"];
+    disabled?: boolean;
   }>(),
-  { variant: 'primary', size: 'md', disabled: false }
-)
+  {
+    variant: "primary",
+    size: "md",
+    disabled: false,
+  },
+);
+
+const classes = computed(() =>
+  button({ variant: props.variant, size: props.size }),
+);
 </script>
 
 <template>
-  <button
-    :disabled="disabled"
-    :class="['btn', `btn--${variant}`, `btn--${size}`]"
-  >
+  <button :disabled="disabled" :class="classes">
     <slot />
   </button>
 </template>
-
-<style scoped lang="scss">
-$purple-50:  #faf5ff;
-$purple-100: #f3e8ff;
-$purple-600: #9333ea;
-$purple-700: #7e22ce;
-$purple-800: #6b21a8;
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-family: inherit;
-  font-weight: 500;
-  border-radius: 8px;
-  border: 1px solid transparent;
-  cursor: pointer;
-  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
-  line-height: 1;
-  white-space: nowrap;
-
-  &:focus-visible {
-    outline: 2px solid $purple-600;
-    outline-offset: 2px;
-  }
-
-  &:disabled {
-    opacity: 0.5;
-    pointer-events: none;
-  }
-
-  // Variants
-  &--primary {
-    background-color: $purple-600;
-    color: #fff;
-
-    &:hover  { background-color: $purple-700; }
-    &:active { background-color: $purple-800; }
-  }
-
-  &--secondary {
-    background-color: transparent;
-    color: $purple-600;
-    border-color: $purple-600;
-
-    &:hover  { background-color: $purple-50; }
-    &:active { background-color: $purple-100; }
-  }
-
-  &--ghost {
-    background-color: transparent;
-    color: $purple-600;
-
-    &:hover  { background-color: $purple-50; }
-    &:active { background-color: $purple-100; }
-  }
-
-  // Sizes
-  &--sm { padding: 6px 12px;  font-size: 0.875rem; }
-  &--md { padding: 8px 16px;  font-size: 1rem;     }
-  &--lg { padding: 12px 24px; font-size: 1.125rem; }
-}
-</style>
