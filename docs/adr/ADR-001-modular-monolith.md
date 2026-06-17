@@ -2,12 +2,12 @@
 
 Acesso em: [Clique aqui para ler a documentação completa!](https://four-check-a80.notion.site/ADR-Arquitetura-Frontend-da-Plataforma-37c59f5a611180f98017d145478ca533?pvs=74)
 
-| Campo | Valor |
-| --- | --- |
-| Status | Proposta |
-| Autor | Peterson Almeida |
-| Data | 12/06/2026 |
-| Revisores | A definir |
+| Campo     | Valor            |
+| --------- | ---------------- |
+| Status    | Proposta         |
+| Autor     | Peterson Almeida |
+| Data      | 12/06/2026       |
+| Revisores | A definir        |
 
 ## 1. Contexto
 
@@ -18,7 +18,7 @@ Durante as discussões iniciais de arquitetura, surgiu a necessidade de definir 
 1. Monólito Modular
 2. Microfrontends
 
- **A decisão impactará diretamente aspectos como:**
+**A decisão impactará diretamente aspectos como:**
 
 - Estrutura do código-fonte
 - Organização dos domínios de negócio
@@ -142,17 +142,17 @@ Cada domínio possui suas próprias responsabilidades, componentes, serviços, c
 
 # 4. Comparativo
 
-| Critério | Monólito Modular | Microfrontends |
-| --- | --- | --- |
-| Complexidade Arquitetural | Baixa | Alta |
-| Complexidade Operacional | Baixa | Alta |
-| Velocidade Inicial de Desenvolvimento | Alta | Média |
-| Facilidade de Refatoração | Alta | Média |
-| Consistência de UX/UI | Alta | Média |
-| Deploy Independente | Não | Sim |
-| Escalabilidade Organizacional | Média | Alta |
-| Custo de Manutenção | Menor | Maior |
-| Curva de Aprendizado | Menor | Maior |
+| Critério                              | Monólito Modular | Microfrontends |
+| ------------------------------------- | ---------------- | -------------- |
+| Complexidade Arquitetural             | Baixa            | Alta           |
+| Complexidade Operacional              | Baixa            | Alta           |
+| Velocidade Inicial de Desenvolvimento | Alta             | Média          |
+| Facilidade de Refatoração             | Alta             | Média          |
+| Consistência de UX/UI                 | Alta             | Média          |
+| Deploy Independente                   | Não              | Sim            |
+| Escalabilidade Organizacional         | Média            | Alta           |
+| Custo de Manutenção                   | Menor            | Maior          |
+| Curva de Aprendizado                  | Menor            | Maior          |
 
 ---
 
@@ -162,28 +162,7 @@ Recomenda-se a adoção de uma arquitetura baseada em **Monólito Modular** util
 
 A organização da aplicação deverá seguir uma abordagem orientada a domínios de negócio (Feature-Based Architecture), mantendo fronteiras claras entre os módulos.
 
-
----
-
-# 6. Estratégia de Deploy
-
-A plataforma será distribuída como uma Single Page Application (SPA), gerando assets estáticos para publicação em CDN ou infraestrutura equivalente.
-
-Fluxo:
-
-```markdown
-CDN / Nginx
-		↓
-Frontend SPA (Nuxt)
-		↓
-APIs / Microserviços
-```
-
-Esta abordagem reduz a complexidade operacional e elimina a necessidade de infraestrutura dedicada para renderização server-side da área autenticada da plataforma.
-
----
-
-# 7. Riscos da Decisão
+# 6. Riscos da Decisão
 
 ## Crescimento excessivo da aplicação
 
@@ -208,7 +187,7 @@ A arquitetura proposta deverá preservar a separação lógica entre domínios, 
 
 ---
 
-# 8. Decisão recomendada
+# 7. Decisão recomendada
 
 ### 👉 Monólito Modular
 
@@ -223,8 +202,7 @@ A decisão é fundamentada na busca por:
 - ✅ Facilidade de manutenção.
 - ✅ Evolução incremental da arquitetura.
 
-> *A adoção de Microfrontends deverá ser reavaliada futuramente caso surjam necessidades concretas relacionadas à autonomia de equipes, deploy independente por domínio ou escalabilidade organizacional.*
->
+> _A adoção de Microfrontends deverá ser reavaliada futuramente caso surjam necessidades concretas relacionadas à autonomia de equipes, deploy independente por domínio ou escalabilidade organizacional._
 
 ### ⚙️ Tecnologias/Stack
 
@@ -250,11 +228,6 @@ A decisão é fundamentada na busca por:
 
 - Monólito Modular
 - Feature-Based Architecture
-
-#### Rendering/Entrega
-
-- SPA para área autenticada
-- Assets estáticos
 
 #### Estado
 
