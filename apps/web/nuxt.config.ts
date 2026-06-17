@@ -1,4 +1,5 @@
 import { resolve } from 'node:path'
+
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineNuxtConfig({
@@ -12,6 +13,7 @@ export default defineNuxtConfig({
   },
   css: ['~/app/app.css'],
   vite: {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     plugins: [tailwindcss() as any],
   },
   runtimeConfig: {
@@ -22,8 +24,7 @@ export default defineNuxtConfig({
 
       appEnv: process.env.NUXT_PUBLIC_APP_ENV,
 
-      enableTelemetry:
-        process.env.NUXT_PUBLIC_ENABLE_TELEMETRY === 'true',
+      enableTelemetry: process.env.NUXT_PUBLIC_ENABLE_TELEMETRY === 'true',
     },
   },
 })

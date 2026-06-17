@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
+
 import PageHeader from './PageHeader.vue'
 
 const meta: Meta<typeof PageHeader> = {

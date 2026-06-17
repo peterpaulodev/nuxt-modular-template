@@ -1,7 +1,8 @@
 import { resolve } from 'node:path'
-import vue from '@vitejs/plugin-vue'
-import tailwindcss from '@tailwindcss/vite'
+
 import type { StorybookConfig } from '@storybook/vue3-vite'
+import tailwindcss from '@tailwindcss/vite'
+import vue from '@vitejs/plugin-vue'
 
 const config: StorybookConfig = {
   stories: ['../app/shared/ui/**/*.stories.@(js|ts)'],

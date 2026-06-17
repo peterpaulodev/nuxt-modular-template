@@ -1,8 +1,5 @@
 class TelemetryService {
-  trackEvent(
-    name: string,
-    payload?: Record<string, unknown>
-  ) {
+  trackEvent(name: string, payload?: Record<string, unknown>) {
     console.log('[EVENT]', name, payload)
   }
 

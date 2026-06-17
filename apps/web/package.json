@@ -6,6 +6,7 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "test": "echo tests are not implemented yet",
     "generate": "nuxt generate",
     "preview": "nuxt preview",

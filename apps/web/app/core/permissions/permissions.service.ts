@@ -1,6 +1,6 @@
 class PermissionsService {
   can(permission: string) {
-    return true
+    return permission
   }
 }
 

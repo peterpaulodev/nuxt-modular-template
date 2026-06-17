@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
+
 import Button from './Button.vue'
 
 const meta: Meta<typeof Button> = {
@@ -15,9 +16,11 @@ export default meta
 
 type Story = StoryObj<typeof Button>
 
-const render = (args: any) => ({
+const render = (args: Story['args']) => ({
   components: { Button },
-  setup() { return { args } },
+  setup() {
+    return { args }
+  },
   template: '<Button v-bind="args">Click me</Button>',
 })
 
