@@ -11,20 +11,20 @@ export default defineNuxtConfig({
     '@shared': resolve('./app/shared'),
     '@modules': resolve('./app/modules'),
   },
-  css: ['~/app/app.css'],
+  css: ['~/app.css'],
   vite: {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     plugins: [tailwindcss() as any],
   },
+  // O Nuxt sobrescreve automaticamente cada chave em runtime
+  // com a variável de ambiente correspondente: NUXT_PUBLIC_<CHAVE_EM_UPPER_SNAKE>.
+  // Os valores abaixo são apenas os defaults para desenvolvimento local.
   runtimeConfig: {
     public: {
-      apiBaseUrl: process.env.NUXT_PUBLIC_API_BASE_URL,
-
-      appName: process.env.NUXT_PUBLIC_APP_NAME,
-
-      appEnv: process.env.NUXT_PUBLIC_APP_ENV,
-
-      enableTelemetry: process.env.NUXT_PUBLIC_ENABLE_TELEMETRY === 'true',
+      apiBaseUrl: 'https://jsonplaceholder.typicode.com',
+      appName: 'Nuxt Modular Monolith',
+      appEnv: 'local',
+      enableTelemetry: false,
     },
   },
 })

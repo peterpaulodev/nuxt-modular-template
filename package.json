@@ -10,6 +10,7 @@
     "create:module": "node scripts/create-module.mjs",
     "create:ui": "node scripts/create-ui.mjs",
     "create:page": "node scripts/create-page.mjs",
+    "create:feature": "node scripts/create-feature.mjs",
     "storybook": "pnpm --filter web storybook",
     "format": "pnpm --filter web format"
   },
