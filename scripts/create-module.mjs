@@ -23,6 +23,7 @@ const folders = [
   'components',
   'composables',
   'pages',
+  'stores',
   'types',
   'tests',
 ]
@@ -69,6 +70,24 @@ fs.writeFileSync(
     ${pascalCase} Page
   </div>
 </template>
+`
+)
+
+fs.writeFileSync(
+  path.join(
+    modulePath,
+    'stores',
+    `${moduleName}.store.ts`
+  ),
+  `import { defineStore } from 'pinia'
+import { ref } from 'vue'
+
+export const use${pascalCase}Store = defineStore('${moduleName}', () => {
+  // Estado persistente do módulo ${pascalCase}.
+  // Popule via composable — o store apenas armazena.
+
+  return {}
+})
 `
 )
 

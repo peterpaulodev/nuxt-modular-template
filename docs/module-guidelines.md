@@ -28,6 +28,7 @@ Cada módulo deve ser responsável por encapsular:
 * Componentes
 * Regras de apresentação
 * Comunicação com APIs
+* Estado persistente
 * Tipos
 * Testes
 
@@ -46,6 +47,7 @@ modules/<module-name>
 ├── components/
 ├── composables/
 ├── pages/
+├── stores/
 ├── types/
 └── tests/
 ```
@@ -59,6 +61,7 @@ modules/banking
 ├── components/
 ├── composables/
 ├── pages/
+├── stores/
 ├── types/
 └── tests/
 ```
@@ -119,7 +122,7 @@ Contém a lógica de orquestração da feature.
 Responsabilidades:
 
 * Chamar repositories
-* Gerenciar estado local
+* Delegar estado persistente ao store
 * Coordenar fluxos da tela
 
 Exemplo:
@@ -127,6 +130,22 @@ Exemplo:
 ```text
 useAccounts.ts
 useTransfers.ts
+```
+
+---
+
+## stores
+
+Gerencia o estado persistente do módulo com Pinia.
+
+O store armazena dados que sobrevivem à navegação e que podem ser lidos por múltiplos componentes do módulo.
+
+O composable é o responsável por popular o store — o store apenas armazena e expõe o estado.
+
+Exemplo:
+
+```text
+banking.store.ts
 ```
 
 ---

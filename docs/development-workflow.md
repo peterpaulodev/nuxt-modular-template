@@ -23,6 +23,7 @@ modules/banking
 ├── components/
 ├── composables/
 ├── pages/
+├── stores/
 ├── types/
 └── tests/
 
@@ -72,9 +73,31 @@ Evite chamadas HTTP diretamente em componentes ou páginas.
 
 ---
 
-## 4. Implementar os Composables
+## 4. Implementar o Store do Módulo
 
-Os composables devem concentrar a lógica da feature e orquestrar a comunicação com repositories.
+Para estado que deve sobreviver à navegação ou ser compartilhado entre múltiplos componentes do módulo, utilize um Pinia store.
+
+Exemplo:
+
+```text
+modules/banking/stores/
+```
+
+```ts
+export const useBankingStore = defineStore('banking', () => {
+  const accounts = ref<Account[]>([])
+
+  return { accounts }
+})
+```
+
+O store apenas armazena — o composable é o responsável por populá-lo.
+
+---
+
+## 5. Implementar os Composables
+
+Os composables devem concentrar a lógica da feature e orquestrar a comunicação com repositories e o store.
 
 Exemplo:
 
@@ -84,22 +107,21 @@ modules/banking/composables/
 
 ```ts
 export const useBanking = () => {
-  const accounts = ref([])
+  const store = useBankingStore()
+  const { accounts } = storeToRefs(store)
+  const repository = new BankingRepository()
 
   const loadAccounts = async () => {
-    accounts.value = await repository.getAccounts()
+    store.accounts = await repository.getAccounts()
   }
 
-  return {
-    accounts,
-    loadAccounts,
-  }
+  return { accounts, loadAccounts }
 }
 ```
 
 ---
 
-## 5. Implementar Componentes do Domínio
+## 6. Implementar Componentes do Domínio
 
 Crie componentes específicos da funcionalidade dentro do próprio módulo.
 
@@ -123,7 +145,7 @@ shared/ui/
 
 ---
 
-## 6. Implementar a Página da Feature
+## 7. Implementar a Página da Feature
 
 A página do módulo deve ser responsável apenas por compor componentes e utilizar composables.
 
@@ -147,7 +169,7 @@ Backend
 
 ---
 
-## 7. Adicionar Testes
+## 8. Adicionar Testes
 
 Adicione testes para comportamentos relevantes da funcionalidade.
 
@@ -165,7 +187,7 @@ modules/banking/**/*.spec.ts
 
 ---
 
-## 8. Executar Validações Locais
+## 9. Executar Validações Locais
 
 Antes de abrir um Pull Request execute:
 
@@ -178,13 +200,14 @@ Garanta que não existam erros de lint ou falhas de testes.
 
 ---
 
-## 9. Abrir Pull Request
+## 10. Abrir Pull Request
 
 Antes de solicitar revisão confirme:
 
 * Estrutura do módulo segue o padrão definido
 * Não existem dependências entre módulos
 * APIs estão encapsuladas em repositories
+* Estado persistente utiliza Pinia store quando necessário
 * Componentes compartilháveis foram movidos para Shared
 * Tipagem adequada foi aplicada
 * Testes foram adicionados quando necessário
@@ -200,6 +223,8 @@ Create Feature
 Define Types
       ↓
 Implement Repository
+      ↓
+Implement Store
       ↓
 Implement Composable
       ↓

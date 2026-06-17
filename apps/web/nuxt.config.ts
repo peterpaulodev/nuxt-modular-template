@@ -16,14 +16,14 @@ export default defineNuxtConfig({
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     plugins: [tailwindcss() as any],
   },
-  // O Nuxt sobrescreve automaticamente cada chave em runtime
-  // com a variável de ambiente correspondente: NUXT_PUBLIC_<CHAVE_EM_UPPER_SNAKE>.
-  // Os valores abaixo são apenas os defaults para desenvolvimento local.
+  // Declara as chaves de configuração pública da aplicação.
+  // Os valores são injetados em runtime via variáveis de ambiente: NUXT_PUBLIC_<CHAVE_EM_UPPER_SNAKE>.
+  // Configure o ambiente copiando .env.example para .env.
   runtimeConfig: {
     public: {
-      apiBaseUrl: 'https://jsonplaceholder.typicode.com',
-      appName: 'Nuxt Modular Monolith',
-      appEnv: 'local',
+      apiBaseUrl: '',
+      appName: '',
+      appEnv: '',
       enableTelemetry: false,
     },
   },
