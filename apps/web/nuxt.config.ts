@@ -4,6 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineNuxtConfig({
   compatibilityDate: '2026-06-15',
   devtools: { enabled: true },
+  modules: ['@nuxt/eslint'],
   alias: {
     '@core': resolve('./app/core'),
     '@shared': resolve('./app/shared'),
