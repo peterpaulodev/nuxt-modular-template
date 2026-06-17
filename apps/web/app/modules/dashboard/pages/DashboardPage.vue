@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PageHeader } from '@shared/ui'
+import { MetricCard, PageHeader } from '@shared/ui'
 import { formatNumber } from '@shared/utils/format'
 import { onMounted } from 'vue'
 
@@ -23,14 +23,8 @@ onMounted(loadMetrics)
     </div>
 
     <div v-else-if="metrics" class="mt-6 grid grid-cols-2 gap-4">
-      <div class="rounded-lg border border-gray-200 p-6">
-        <p class="text-sm text-gray-500">Usuários</p>
-        <p class="mt-1 text-3xl font-semibold">{{ formatNumber(metrics.users) }}</p>
-      </div>
-      <div class="rounded-lg border border-gray-200 p-6">
-        <p class="text-sm text-gray-500">Transações</p>
-        <p class="mt-1 text-3xl font-semibold">{{ formatNumber(metrics.transactions) }}</p>
-      </div>
+      <MetricCard label="Usuários" :value="formatNumber(metrics.users)" />
+      <MetricCard label="Transações" :value="formatNumber(metrics.transactions)" />
     </div>
   </div>
 </template>
