@@ -1,15 +1,18 @@
 import { ApiError } from '@core/api'
+import { storeToRefs } from 'pinia'
 import { ref } from 'vue'
 
 import { DashboardRepository } from '../api/dashboard.repository'
-import type { DashboardMetrics } from '../types'
+import { useDashboardStore } from '../stores/dashboard.store'
 
 // O composable é o orquestrador da feature.
-// Gerencia estado local (loading, error, dados) e delega IO para o repository.
+// Estado persistente (metrics) fica no store; estado de tela (isLoading, error) fica local.
 export const useDashboard = () => {
+  const store = useDashboardStore()
+  const { metrics } = storeToRefs(store)
+
   const repository = new DashboardRepository()
 
-  const metrics = ref<DashboardMetrics | null>(null)
   const isLoading = ref(false)
   const error = ref<string | null>(null)
 
@@ -18,7 +21,7 @@ export const useDashboard = () => {
     error.value = null
 
     try {
-      metrics.value = await repository.getMetrics()
+      store.metrics = await repository.getMetrics()
     } catch (e) {
       // ApiError é lançado pelo HttpClient quando a API retorna um status de erro.
       // Outros erros (ex: rede offline) caem no else.

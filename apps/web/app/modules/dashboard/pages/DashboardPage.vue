@@ -4,6 +4,10 @@ import { onMounted } from 'vue'
 
 import { useDashboard } from '../composables/useDashboard'
 
+// Protege a rota com o middleware de autenticação.
+// Remova esta linha para tornar a página pública.
+definePageMeta({ middleware: 'auth' })
+
 // A Page é o ponto de entrada do módulo.
 // Ela compõe o composable e delega toda a lógica para ele.
 const { metrics, isLoading, error, loadMetrics } = useDashboard()

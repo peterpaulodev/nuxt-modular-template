@@ -7,7 +7,7 @@
     "dev": "nuxt dev",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "test": "echo tests are not implemented yet",
+    "test": "vitest run",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
@@ -16,8 +16,10 @@
     "format": "prettier --write ."
   },
   "dependencies": {
+    "@pinia/nuxt": "^0.11.3",
     "class-variance-authority": "^0.7.1",
     "nuxt": "^4.4.8",
+    "pinia": "^3.0.4",
     "vue": "^3.5.35"
   },
   "devDependencies": {
@@ -26,8 +28,10 @@
     "@storybook/vue3-vite": "^9.1.20",
     "@tailwindcss/vite": "^4.3.1",
     "@vitejs/plugin-vue": "^6.0.7",
+    "@vue/test-utils": "^2.4.11",
     "eslint": "^10.5.0",
     "eslint-plugin-simple-import-sort": "^13.0.0",
+    "jsdom": "^29.1.1",
     "lint-staged": "^17.0.7",
     "playwright": "^1.60.0",
     "prettier": "^3.8.4",
