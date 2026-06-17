@@ -55,19 +55,19 @@ pnpm create:feature banking
 - [🧭 Princípios Arquiteturais](#-princípios-arquiteturais)
 - [📚 Documentação](#-documentação)
 - [🛠️ Stack e Ferramentas](#️-stack-e-ferramentas)
-    - [Core Framework](#core-framework)
-    - [Qualidade de Código](#qualidade-de-código)
-    - [Testes](#testes)
-    - [Arquitetura](#arquitetura)
-    - [Developer Experience](#developer-experience)
+  - [Core Framework](#core-framework)
+  - [Qualidade de Código](#qualidade-de-código)
+  - [Testes](#testes)
+  - [Arquitetura](#arquitetura)
+  - [Developer Experience](#developer-experience)
 - [🎯 Principais Decisões](#-principais-decisões)
 - [🗂️ Estrutura do Projeto](#️-estrutura-do-projeto)
 - [⚙️ Core](#️-core)
 - [♻️ Shared](#️-shared)
 - [🧩 Estrutura de um Módulo](#-estrutura-de-um-módulo)
 - [🔒 Regras Arquiteturais](#-regras-arquiteturais)
-    - [Permitido](#permitido)
-    - [Não permitido](#não-permitido)
+  - [Permitido](#permitido)
+  - [Não permitido](#não-permitido)
 - [🛣️ Rotas](#️-rotas)
 - [🧰 Developer Toolkit](#-developer-toolkit)
 - [📦 Scripts Disponíveis](#-scripts-disponíveis)
@@ -105,13 +105,13 @@ flowchart LR
 
 Este template foi criado para:
 
-* Organizar funcionalidades por domínio de negócio
-* Evitar acoplamento entre áreas da aplicação
-* Facilitar manutenção de longo prazo
-* Melhorar onboarding de novos desenvolvedores
-* Reduzir decisões repetitivas
-* Fornecer uma base consistente para múltiplos produtos
-* Escalar sem aumentar a complexidade operacional
+- Organizar funcionalidades por domínio de negócio
+- Evitar acoplamento entre áreas da aplicação
+- Facilitar manutenção de longo prazo
+- Melhorar onboarding de novos desenvolvedores
+- Reduzir decisões repetitivas
+- Fornecer uma base consistente para múltiplos produtos
+- Escalar sem aumentar a complexidade operacional
 
 ---
 
@@ -119,14 +119,14 @@ Este template foi criado para:
 
 Esta arquitetura foi construída sobre os seguintes princípios:
 
-* Organização por domínio
-* Alta coesão
-* Baixo acoplamento
-* Simplicidade operacional
-* Evolução incremental
-* Separação clara de responsabilidades
-* Developer Experience em primeiro lugar
-* Modularidade sem distribuição prematura
+- Organização por domínio
+- Alta coesão
+- Baixo acoplamento
+- Simplicidade operacional
+- Evolução incremental
+- Separação clara de responsabilidades
+- Developer Experience em primeiro lugar
+- Modularidade sem distribuição prematura
 
 ---
 
@@ -234,12 +234,12 @@ core/
 
 Exemplos:
 
-* HTTP Client
-* Authentication
-* Authorization
-* Telemetry
-* Runtime Config
-* Logging
+- HTTP Client
+- Authentication
+- Authorization
+- Telemetry
+- Runtime Config
+- Logging
 
 ---
 
@@ -259,10 +259,10 @@ shared/
 
 Exemplos:
 
-* Design System
-* Helpers
-* Tipagens compartilhadas
-* Composables reutilizáveis
+- Design System
+- Helpers
+- Tipagens compartilhadas
+- Composables reutilizáveis
 
 ---
 
@@ -337,7 +337,7 @@ As páginas atuam apenas como adaptadores.
 
 ```vue
 <script setup lang="ts">
-import BankingPage from '@modules/banking/pages/BankingPage.vue'
+import BankingPage from "@modules/banking/pages/BankingPage.vue";
 </script>
 
 <template>
@@ -353,11 +353,11 @@ A lógica de negócio deve permanecer dentro do módulo.
 
 Documentação complementar:
 
-* 📖 [Architecture](./docs/architecture.md)
-* 🧩 [Module Guidelines](./docs/module-guidelines.md)
-* 👨‍💻 [Development Workflow](./docs/development-workflow.md)
-* 🛠️ [Generators](./docs/generators.md)
-* 🤝 [Contributing](./docs/contributing.md)
+- 📖 [Architecture](./docs/architecture.md)
+- 🧩 [Module Guidelines](./docs/module-guidelines.md)
+- 👨‍💻 [Development Workflow](./docs/development-workflow.md)
+- 🛠️ [Generators](./docs/generators.md)
+- 🤝 [Contributing](./docs/contributing.md)
 
 ---
 
@@ -419,4 +419,5 @@ antes de abrir um Pull Request.
 ---
 
 # 📄 Licença
+
 Definir conforme estratégia da organização.
